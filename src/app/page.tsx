@@ -2,9 +2,10 @@
 import { useState, useEffect } from 'react';
 import api from '@/lib/api';
 import ContentCard from '@/components/ContentCard';
+import { Content } from '@/types/content';
 
 export default function Home() {
-  const [feed, setFeed] = useState([]);
+  const [feed, setFeed] = useState<Content[]>([]);
 
   useEffect(() => {
     fetchFeed();
