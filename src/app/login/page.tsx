@@ -14,7 +14,12 @@ export default function Login() {
     try {
       const res = await api.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
-      router.push('/');
+      // Redirect based on role
+      if (res.data.user.role === 'ADMIN') {
+        router.push('/admin');
+      } else {
+        router.push('/');
+      }
     } catch (err) {
       setError('Invalid credentials');
     }
