@@ -14,7 +14,6 @@ export default function Login() {
     try {
       const res = await api.post('/auth/login', { email, password });
       localStorage.setItem('token', res.data.token);
-      // Redirect based on role
       if (res.data.user.role === 'ADMIN') {
         router.push('/admin');
       } else {
